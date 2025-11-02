@@ -94,6 +94,17 @@
             box-shadow: 0 20px 40px rgba(47, 128, 237, 0.5);
         }
 
+        .btn-secondary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 15px 30px rgba(47, 128, 237, 0.35);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(27, 78, 161, 0.45);
+        }
+
         .btn-outline {
             background: transparent;
             color: #fff;
@@ -200,6 +211,12 @@
             gap: 0.35rem;
         }
 
+        .exam-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
         .info-grid {
             display: grid;
             gap: 1.5rem;
@@ -272,15 +289,15 @@
             <div class="info-grid">
                 <div class="info-card">
                     <h3>1. Sınağı seç</h3>
-                    <p>Tarix, qrup və blok məlumatlarını müqayisə edərək özünə uyğun sınağı seç və "Ödəniş et" düyməsinə kliklə.</p>
+                    <p>Tarix, qrup və blok məlumatlarını müqayisə edərək özünə uyğun sınağı seç və "Qeydiyyat et" düyməsinə kliklə.</p>
                 </div>
                 <div class="info-card">
-                    <h3>2. Ödənişi tamamla</h3>
-                    <p>Ödəniş linkinə yönləndikdən sonra kart məlumatlarını daxil edib təsdiqlə. Uğurlu ödənişdən sonra sistemdə qeydiyyatın tamamlanacaq.</p>
+                    <h3>2. Qeydiyyatı tamamla</h3>
+                    <p>Açılan formda tələb olunan məlumatları doldur və təsdiqlə. Uğurlu göndərişdən sonra ödəniş mərhələsinə keç.</p>
                 </div>
                 <div class="info-card">
-                    <h3>3. Təsdiq və dəstək</h3>
-                    <p>Sınaqdan əvvəl təsdiq mesajı alacaqsan. Hər hansı sual yaranarsa, WhatsApp vasitəsilə bizimlə əlaqə saxla.</p>
+                    <h3>3. Ödəniş və təsdiq</h3>
+                    <p>Ödəniş linkinə yönləndikdən sonra kart məlumatlarını daxil edib təsdiqlə. Hər hansı sual yaranarsa, WhatsApp vasitəsilə bizimlə əlaqə saxla.</p>
                 </div>
             </div>
         </section>
@@ -331,9 +348,11 @@
                 groups: ['II qrup', 'III qrup'],
                 description: 'Real imtahan şəraitində keçirilən blok sınağı. Məhdud yerlər mövcuddur.',
                 time: 'Saat 10:00',
-                location: 'Şərur şəhəri',
+                location: 'Şərur şəhəri, Sınaq Mərkəzi binası',
+                registrationUrl: '#GOOGLE_FORM_LINKINI_BURA_ELAVE_ET',
                 paymentUrl: '#ODEMIS_LINKINI_BURA_ELAVE_ET',
-                paymentnote: " ÖDƏNİŞİ ETDİKDƏN SONRA MÜTLƏQ ƏN AŞAĞIDA YERLƏŞƏN VATSAP İLƏ ƏLAQƏ SAXLAYIN! " 
+                registrationNote: 'Qeydiyyat linkini özünüz əlavə etməlisiniz. #GOOGLE_FORM_LINKINI_BURA_ELAVE_ET hissəsini dəyişin.',
+                paymentNote: 'Ödəniş linkini özünüz əlavə etməlisiniz. #ODEMIS_LINKINI_BURA_ELAVE_ET hissəsini dəyişin.'
             }
         ];
 
@@ -357,10 +376,18 @@
                     <span>📍 ${exam.location}</span>
                     <span>👥 Qruplar: ${exam.groups.join(', ')}</span>
                 </div>
-                <a class="btn btn-primary" href="${exam.paymentUrl}" target="_blank" rel="noopener">
-                    Ödəniş et
-                </a>
-                <p style="font-size:0.85rem; color: var(--muted);">${exam.paymentNote}</p>
+                <div class="exam-actions">
+                    <a class="btn btn-secondary" href="${exam.registrationUrl}" target="_blank" rel="noopener">
+                        Qeydiyyat et
+                    </a>
+                    <a class="btn btn-primary" href="${exam.paymentUrl}" target="_blank" rel="noopener">
+                        Ödəniş et
+                    </a>
+                </div>
+                <div style="font-size:0.85rem; color: var(--muted); display: grid; gap: 0.5rem;">
+                    <span>${exam.registrationNote}</span>
+                    <span>${exam.paymentNote}</span>
+                </div>
             </article>
         `;
 
