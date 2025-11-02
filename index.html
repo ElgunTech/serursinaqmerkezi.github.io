@@ -1,1 +1,374 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şərur Sınaq Mərkəzi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2f80ed;
+            --primary-dark: #1b4ea1;
+            --accent: #f2994a;
+            --bg: #f6f9fc;
+            --text: #1f2937;
+            --muted: #6b7280;
+            font-family: 'Poppins', sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(47, 128, 237, 0.9), rgba(43, 90, 191, 0.9)), url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: #fff;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero {
+            max-width: 900px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 45px rgba(15, 52, 96, 0.25);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.6rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 15px 30px rgba(47, 128, 237, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(47, 128, 237, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        main {
+            max-width: 1080px;
+            margin: -4rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px rgba(31, 45, 61, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            width: 64px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .exam-card {
+            border-radius: 18px;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(47, 128, 237, 0.08), rgba(47, 128, 237, 0.02));
+            border: 1px solid rgba(47, 128, 237, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px rgba(47, 128, 237, 0.15);
+        }
+
+        .exam-date {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .exam-date strong {
+            font-size: 1.5rem;
+            background: #fff;
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 1px rgba(47, 128, 237, 0.15);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(242, 153, 74, 0.15);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            padding: 1.5rem;
+            border-radius: 18px;
+            background: rgba(47, 128, 237, 0.06);
+            border: 1px solid rgba(47, 128, 237, 0.15);
+        }
+
+        .info-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                min-height: auto;
+                padding: 2.5rem 1.25rem;
+            }
+
+            .hero {
+                padding: 2.25rem 1.5rem;
+            }
+
+            main {
+                margin-top: -3rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="badge">Şərur Sınaq Mərkəzi</div>
+            <h1>Yüksək nəticə üçün professional sınaqlar</h1>
+            <p>Şərur Sınaq Mərkəzində keçirilən sınaq imtahanlarına qoşul, real imtahan təcrübəsi qazan və nəticələrini detallı analiz et. Qeydiyyat və ödəniş bir neçə dəqiqə ərzində tamamlanır.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="#exams">Sınaqlara bax</a>
+                <a class="btn btn-outline" href="#contact">Əlaqə üçün</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="exams">
+            <h2>Aktiv sınaqlar</h2>
+            <p>Yenilənmiş imtahan cədvəli sayəsində tələbələr üçün ən uyğun tarixi seçmək çox asandır. Aşağıdakı siyahıda hazırda açıq olan sınaqları görəcəksiniz. Yeni sınaqlar əlavə etdikcə bu bölmə avtomatik genişlənəcək.</p>
+
+            <div class="exam-grid" id="examList">
+                <!-- Exam cards will be injected here -->
+            </div>
+        </section>
+
+        <section>
+            <h2>Qeydiyyat prosesi</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>1. Sınağı seç</h3>
+                    <p>Tarix, qrup və blok məlumatlarını müqayisə edərək özünə uyğun sınağı seç və "Ödəniş et" düyməsinə kliklə.</p>
+                </div>
+                <div class="info-card">
+                    <h3>2. Ödənişi tamamla</h3>
+                    <p>Ödəniş linkinə yönləndikdən sonra kart məlumatlarını daxil edib təsdiqlə. Uğurlu ödənişdən sonra sistemdə qeydiyyatın tamamlanacaq.</p>
+                </div>
+                <div class="info-card">
+                    <h3>3. Təsdiq və dəstək</h3>
+                    <p>Sınaqdan əvvəl təsdiq mesajı alacaqsan. Hər hansı sual yaranarsa, WhatsApp vasitəsilə bizimlə əlaqə saxla.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mərkəz haqqında</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Peşəkar müəllim heyəti</h3>
+                    <p>Sualları və blok sınaqlarını mütəxəssis müəllimlərimiz hazırlayır. Məqsədimiz sınaqları real imtahana maksimal yaxınlaşdırmaqdır.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Analiz və rəy</h3>
+                    <p>İştirakçılar nəticələri əsasında güclü və zəif tərəflərini görür, növbəti sınaqlara hədəfli hazırlaşırlar. Çapa uyğun hesabat təqdim olunur.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Çevik cədvəl</h3>
+                    <p>Həftəlik və aylıq yeni sınaqlar əlavə edirik. Bu səbəbdən veb-saytımızda daima yenilənən cədvəl görəcəksiniz.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Əlaqə</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>WhatsApp dəstəyi</h3>
+                    <p>Sual və təkliflər üçün bizimlə əlaqə saxlayın. Komandamız qeydiyyat və ödənişlə bağlı bütün suallara cavab verməyə hazırdır.</p>
+                    <a class="btn btn-primary" href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" rel="noopener">
+                        WhatsApp-la yaz
+                    </a>
+                    <p style="font-size:0.85rem; color: var(--muted); margin-top: 0.75rem;">← <strong>YOUR_WHATSAPP_NUMBER</strong> hissəsini öz WhatsApp nömrənizlə əvəz edin.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © <span id="year"></span> Şərur Sınaq Mərkəzi. Bütün hüquqlar qorunur.
+    </footer>
+
+    <script>
+        const exams = [
+            {
+                id: 'block-231123',
+                title: 'Blok sınağı',
+                date: '23 noyabr 2023',
+                groups: ['II qrup', 'III qrup'],
+                description: 'Real imtahan şəraitində keçirilən blok sınağı. Məhdud yerlər mövcuddur.',
+                time: 'Saat 10:00',
+                location: 'Şərur şəhəri, Sınaq Mərkəzi binası',
+                paymentUrl: '#ODEMIS_LINKINI_BURA_ELAVE_ET',
+                paymentNote: 'Ödəniş linkini özünüz əlavə etməlisiniz. #ODEMIS_LINKINI_BURA_ELAVE_ET hissəsini dəyişin.'
+            }
+        ];
+
+        const examList = document.getElementById('examList');
+
+        const examCard = exam => `
+            <article class="exam-card">
+                <div class="exam-date">
+                    <strong>${exam.date.split(' ')[0]}</strong>
+                    <div>
+                        <h3 style="font-size:1.35rem;">${exam.title}</h3>
+                        <p class="meta" style="margin-top:0.35rem;">
+                            <span>Tarix: ${exam.date}</span>
+                            <span>Vaxt: ${exam.time}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="badge">${exam.groups.join(' • ')}</div>
+                <p>${exam.description}</p>
+                <div class="meta">
+                    <span>📍 ${exam.location}</span>
+                    <span>👥 Qruplar: ${exam.groups.join(', ')}</span>
+                </div>
+                <a class="btn btn-primary" href="${exam.paymentUrl}" target="_blank" rel="noopener">
+                    Ödəniş et
+                </a>
+                <p style="font-size:0.85rem; color: var(--muted);">${exam.paymentNote}</p>
+            </article>
+        `;
+
+        exams.forEach(exam => {
+            examList.insertAdjacentHTML('beforeend', examCard(exam));
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
