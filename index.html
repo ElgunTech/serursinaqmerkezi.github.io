@@ -349,7 +349,10 @@
                 description: 'Real imtahan şəraitində keçirilən blok sınağı. Məhdud yerlər mövcuddur.',
                 time: 'Saat 10:00',
                 location: 'Şərur şəhəri, Sınaq Mərkəzi binası',
-                paymentUrl: 'https://app.birbank.az/qp?t=2&id=29529F1F7CB3A597E0630100007FEA61',
+                registrationUrl: '#GOOGLE_FORM_LINKINI_BURA_ELAVE_ET',
+                paymentUrl: '#ODEMIS_LINKINI_BURA_ELAVE_ET',
+                registrationNote: 'Qeydiyyat linkini özünüz əlavə etməlisiniz. #GOOGLE_FORM_LINKINI_BURA_ELAVE_ET hissəsini dəyişin.',
+                paymentNote: 'Ödəniş linkini özünüz əlavə etməlisiniz. #ODEMIS_LINKINI_BURA_ELAVE_ET hissəsini dəyişin.'
             }
         ];
 
@@ -374,6 +377,9 @@
                     <span>👥 Qruplar: ${exam.groups.join(', ')}</span>
                 </div>
                 <div class="exam-actions">
+                    <a class="btn btn-secondary" href="${exam.registrationUrl}" target="_blank" rel="noopener">
+                        Qeydiyyat et
+                    </a>
                     <a class="btn btn-primary" href="${exam.paymentUrl}" target="_blank" rel="noopener">
                         Ödəniş et
                     </a>
